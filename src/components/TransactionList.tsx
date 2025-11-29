@@ -183,7 +183,7 @@ const TransactionList: FC<TransactionListProps> = ({
                     {formatCurrency(t.amount)}
                   </td>
                   <td className="px-6 py-4 text-center">
-                    <div className="flex items-center justify-center space-x-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className="flex items-center justify-center space-x-2 transition-opacity">
                       <button
                         onClick={() => onEdit(t)}
                         className="p-1.5 text-blue-600 hover:bg-blue-50 rounded-md"
