@@ -2,6 +2,7 @@ import { useState, useMemo, type FC } from "react";
 import { Transaction, TransactionType } from "../types";
 import { CATEGORIES } from "../constants";
 import { Trash2, Edit2, Filter, Search } from "lucide-react";
+import Modal from "./Modal";
 
 interface TransactionListProps {
   transactions: Transaction[];
@@ -28,6 +29,24 @@ const TransactionList: FC<TransactionListProps> = ({
       })
       .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
   }, [transactions, filterType, searchTerm]);
+
+  const [confirmOpen, setConfirmOpen] = useState(false);
+  const [pendingDeleteId, setPendingDeleteId] = useState<string | null>(null);
+
+  const openConfirm = (id: string) => {
+    setPendingDeleteId(id);
+    setConfirmOpen(true);
+  };
+
+  const closeConfirm = () => {
+    setPendingDeleteId(null);
+    setConfirmOpen(false);
+  };
+
+  const handleConfirmDelete = () => {
+    if (pendingDeleteId) onDelete(pendingDeleteId);
+    closeConfirm();
+  };
 
   const getCategoryName = (id: string) => {
     const cat = CATEGORIES.find((c) => c.id === id);
@@ -84,6 +103,33 @@ const TransactionList: FC<TransactionListProps> = ({
           </div>
         </div>
       </div>
+      {confirmOpen && (
+        <Modal onClose={closeConfirm}>
+          <div className="p-6">
+            <h3 className="text-lg font-semibold text-slate-800 mb-2">
+              Konfirmasi Hapus
+            </h3>
+            <p className="text-sm text-slate-600 mb-4">
+              Yakin ingin menghapus transaksi ini? Tindakan ini tidak dapat
+              dikembalikan.
+            </p>
+            <div className="flex justify-end space-x-2">
+              <button
+                onClick={closeConfirm}
+                className="px-4 py-2 bg-white border border-slate-200 rounded-md text-sm text-slate-600 hover:bg-slate-50"
+              >
+                Batal
+              </button>
+              <button
+                onClick={handleConfirmDelete}
+                className="px-4 py-2 bg-red-600 text-white rounded-md text-sm hover:bg-red-700"
+              >
+                Hapus
+              </button>
+            </div>
+          </div>
+        </Modal>
+      )}
 
       <div className="overflow-x-auto">
         {filteredData.length === 0 ? (
@@ -146,7 +192,7 @@ const TransactionList: FC<TransactionListProps> = ({
                         <Edit2 size={16} />
                       </button>
                       <button
-                        onClick={() => onDelete(t.id)}
+                        onClick={() => openConfirm(t.id)}
                         className="p-1.5 text-red-600 hover:bg-red-50 rounded-md"
                         title="Hapus"
                       >
