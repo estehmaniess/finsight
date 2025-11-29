@@ -66,9 +66,7 @@ const Home: NextPage = () => {
   };
 
   const handleDeleteTransaction = (id: string) => {
-    if (confirm("Yakin ingin menghapus transaksi ini?")) {
-      setTransactions((prev) => prev.filter((t) => t.id !== id));
-    }
+    setTransactions((prev) => prev.filter((t) => t.id !== id));
   };
 
   const openEditForm = (t: Transaction) => {
@@ -82,7 +80,7 @@ const Home: NextPage = () => {
         <title>Finsight — Pencatat Keuangan</title>
         <meta
           name="description"
-          content="Aplikasi pencatat keuangan sederhana"
+          content="Aplikasi Pencatat Keuangan Sederhana"
         />
       </Head>
 
@@ -205,7 +203,7 @@ const Home: NextPage = () => {
 
         <footer className="bg-white border-t border-slate-200 py-6 mt-auto">
           <div className="max-w-5xl mx-auto px-4 text-center text-slate-400 text-sm">
-            <p>© 2024 Finsight App. Dibuat dengan React & Tailwind.</p>
+            <p>© 2025 Finsight App. Dibuat dengan Next.js & Tailwind.</p>
           </div>
         </footer>
       </div>
