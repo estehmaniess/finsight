@@ -8,22 +8,23 @@ Fitur utama:
 - Menampilkan saldo, total pemasukan, dan total pengeluaran.
 - Ringkasan pengeluaran berdasarkan kategori.
 
-Struktur Folder:
-finsight-next/
-├─ .next/ # Next build artifacts
-├─ dist/ # Standalone build output (after build:standalone)
-├─ node_modules/
-├─ public/ # static assets (logo.svg, favicon.svg)
-├─ scripts/ # helper scripts (build/start)
-├─ src/
-│ ├─ pages/ # Next.js pages (index.tsx, \_app.tsx)
-│ ├─ components/ # Button, Dashboard, TransactionForm, TransactionList, Modal
-│ └─ styles/ # globals.css (Tailwind directives)
-├─ Dockerfile
-├─ package.json
-├─ next.config.mjs
-├─ tsconfig.json
-└─ README.md
+Struktur Folder
+
+- `finsight-next/`
+  - `.next/` — Next build artifacts
+  - `dist/` — Standalone build output (created by `npm run build:standalone`)
+  - `node_modules/`
+  - `public/` — static assets (`logo.svg`, `favicon.svg`)
+  - `scripts/` — helper scripts (build/start)
+  - `src/`
+    - `pages/` — Next.js pages (`index.tsx`, `_app.tsx`)
+    - `components/` — `Button`, `Dashboard`, `TransactionForm`, `TransactionList`, `Modal`
+    - `styles/` — `globals.css` (Tailwind directives)
+  - `Dockerfile`
+  - `package.json`
+  - `next.config.mjs`
+  - `tsconfig.json`
+  - `README.md`
 
 Cara menjalankan (singkat):
 
