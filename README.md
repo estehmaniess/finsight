@@ -10,7 +10,7 @@ Fitur utama:
 
 Struktur Folder
 
-- `finsight-next/`
+- `finsight/`
   - `.next/` — Next build artifacts
   - `dist/` — Standalone build output (created by `npm run build:standalone`)
   - `node_modules/`
